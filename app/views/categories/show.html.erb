@@ -1,2 +1,23 @@
-<h1>Categories#show</h1>
-<p>Find me in app/views/categories/show.html.erb</p>
+<h2><%= @category.name %></h2>
+
+<p><%= @category.description %></p>
+
+<h3>Products in this category</h3>
+
+<% if @products.any? %>
+  <% @products.each do |product| %>
+    <article>
+      <h4><%= link_to product.name, product_path(product) %></h4>
+      <p><%= product.description %></p>
+      <p><strong>Price:</strong> <%= number_to_currency(product.price) %></p>
+    </article>
+  <% end %>
+
+  <%= paginate @products %>
+<% else %>
+  <p>No products found in this category.</p>
+<% end %>
+
+<p>
+  <%= link_to "Back to Products", products_path %>
+</p>
