@@ -1,23 +1,36 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Prairie Pantry Market" %></title>
+    <title>Prairie Pantry Market</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= yield :head %>
-
-    <link rel="manifest" href="/manifest.json">
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <h1>Prairie Pantry Market</h1>
+
+      <nav>
+        <%= link_to "Products", products_path %> |
+        <%= link_to "About", page_path("about") %> |
+        <%= link_to "Contact", page_path("contact") %>
+      </nav>
+    </header>
+
+    <% if notice.present? %>
+      <p class="notice"><%= notice %></p>
+    <% end %>
+
+    <% if alert.present? %>
+      <p class="alert"><%= alert %></p>
+    <% end %>
+
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>
