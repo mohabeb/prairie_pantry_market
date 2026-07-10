@@ -1,2 +1,58 @@
-<h1>Cart#show</h1>
-<p>Find me in app/views/cart/show.html.erb</p>
+<h2>Your Shopping Cart</h2>
+
+<% if @cart_items.empty? %>
+  <p>Your cart is empty.</p>
+
+  <p>
+    <%= link_to "Continue Shopping", products_path %>
+  </p>
+<% else %>
+  <% @cart_items.each do |item| %>
+    <% product = item[:product] %>
+
+    <article>
+      <h3><%= link_to product.name, product_path(product) %></h3>
+
+      <p>
+        <strong>Unit Price:</strong>
+        <%= number_to_currency(product.price) %>
+      </p>
+
+      <p>
+        <strong>Quantity:</strong>
+        <%= item[:quantity] %>
+      </p>
+
+      <%= form_with url: update_cart_path(product), method: :patch, local: true do %>
+        <p>
+          <%= label_tag :quantity, "Change quantity" %><br>
+          <%= number_field_tag :quantity, item[:quantity], min: 1 %>
+        </p>
+
+        <%= submit_tag "Update Quantity" %>
+      <% end %>
+
+      <p>
+        <strong>Line Total:</strong>
+        <%= number_to_currency(item[:line_total_cents] / 100.0) %>
+      </p>
+
+      <p>
+        <%= button_to "Remove Item", remove_from_cart_path(product), method: :delete %>
+      </p>
+    </article>
+  <% end %>
+
+  <h3>
+    Cart Total:
+    <%= number_to_currency(@cart_total_cents / 100.0) %>
+  </h3>
+
+  <p>
+    <%= link_to "Continue Shopping", products_path %>
+  </p>
+
+  <p>
+    <%= button_to "Clear Cart", clear_cart_path, method: :delete %>
+  </p>
+<% end %>
