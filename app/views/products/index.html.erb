@@ -1,2 +1,79 @@
-<h1>Products#index</h1>
-<p>Find me in app/views/products/index.html.erb</p>
+<h2>Shop Local Pantry Products</h2>
+
+<p>
+  Browse local coffee, tea, honey, jam, snacks, and gift boxes from Prairie Pantry Market.
+</p>
+
+<section>
+  <h3>Search Products</h3>
+
+  <%= form_with url: products_path, method: :get, local: true do %>
+    <p>
+      <%= label_tag :keyword, "Keyword" %><br>
+      <%= text_field_tag :keyword, params[:keyword], placeholder: "Search by name or description" %>
+    </p>
+
+    <p>
+      <%= label_tag :category_id, "Category" %><br>
+      <%= select_tag :category_id,
+          options_from_collection_for_select(@categories, :id, :name, params[:category_id]),
+          include_blank: "All categories" %>
+    </p>
+
+    <p>
+      <%= submit_tag "Search" %>
+    </p>
+  <% end %>
+</section>
+
+<section>
+  <p>
+    <%= link_to "All Products", products_path %> |
+    <%= link_to "On Sale", products_path(filter: "sale") %> |
+    <%= link_to "New Arrivals", products_path(filter: "new") %>
+  </p>
+</section>
+
+<section>
+  <h3>Categories</h3>
+
+  <% @categories.each do |category| %>
+    <%= link_to category.name, category_path(category) %>
+  <% end %>
+</section>
+
+<section>
+  <h3>Products</h3>
+
+  <% if @products.any? %>
+    <% @products.each do |product| %>
+      <article>
+        <h4><%= link_to product.name, product_path(product) %></h4>
+
+        <p><%= product.description %></p>
+
+        <p>
+          <strong>Price:</strong>
+          <%= number_to_currency(product.price) %>
+        </p>
+
+        <p>
+          <strong>Categories:</strong>
+          <%= safe_join(product.categories.map { |category| link_to category.name, category_path(category) }, ", ") %>
+        </p>
+
+        <% if product.on_sale? %>
+          <p><strong>On Sale</strong></p>
+        <% end %>
+
+        <% if product.new_arrival? %>
+          <p><strong>New Arrival</strong></p>
+        <% end %>
+      </article>
+    <% end %>
+
+    <%= paginate @products %>
+  <% else %>
+    <p>No products matched your search.</p>
+  <% end %>
+</section>
