@@ -1,2 +1,73 @@
-<h1>Checkout#new</h1>
-<p>Find me in app/views/checkout/new.html.erb</p>
+<h2>Checkout</h2>
+
+<h3>Order Summary</h3>
+
+<% @cart_items.each do |item| %>
+  <article>
+    <h4><%= item[:product].name %></h4>
+
+    <p>
+      Quantity:
+      <%= item[:quantity] %>
+    </p>
+
+    <p>
+      Line Total:
+      <%= number_to_currency(item[:line_total_cents] / 100.0) %>
+    </p>
+  </article>
+<% end %>
+
+<h3>
+  Subtotal:
+  <%= number_to_currency(@subtotal_cents / 100.0) %>
+</h3>
+
+<h3>Customer Information</h3>
+
+<%= form_with url: checkout_path, method: :post, local: true do %>
+  <p>
+    <%= label_tag :first_name, "First Name" %><br>
+    <%= text_field_tag :first_name, nil, required: true %>
+  </p>
+
+  <p>
+    <%= label_tag :last_name, "Last Name" %><br>
+    <%= text_field_tag :last_name, nil, required: true %>
+  </p>
+
+  <p>
+    <%= label_tag :email, "Email" %><br>
+    <%= email_field_tag :email, nil, required: true %>
+  </p>
+
+  <p>
+    <%= label_tag :street, "Street Address" %><br>
+    <%= text_field_tag :street, nil, required: true %>
+  </p>
+
+  <p>
+    <%= label_tag :city, "City" %><br>
+    <%= text_field_tag :city, nil, required: true %>
+  </p>
+
+  <p>
+    <%= label_tag :postal_code, "Postal Code" %><br>
+    <%= text_field_tag :postal_code, nil, required: true %>
+  </p>
+
+  <p>
+    <%= label_tag :province_id, "Province" %><br>
+    <%= select_tag :province_id,
+        options_from_collection_for_select(@provinces, :id, :name),
+        required: true %>
+  </p>
+
+  <p>
+    <%= submit_tag "Place Order" %>
+  </p>
+<% end %>
+
+<p>
+  <%= link_to "Back to Cart", cart_path %>
+</p>
