@@ -1,2 +1,83 @@
-<h1>Checkout#show</h1>
-<p>Find me in app/views/checkout/show.html.erb</p>
+<h2>Order Invoice</h2>
+
+<p>
+  <strong>Order Number:</strong>
+  <%= @order.id %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @order.status %>
+</p>
+
+<h3>Customer</h3>
+
+<p>
+  <%= @order.customer.first_name %>
+  <%= @order.customer.last_name %>
+</p>
+
+<p>
+  <%= @order.customer.email %>
+</p>
+
+<p>
+  <%= @order.customer.street %>,
+  <%= @order.customer.city %>,
+  <%= @order.customer.province.name %>,
+  <%= @order.customer.postal_code %>
+</p>
+
+<h3>Items</h3>
+
+<% @order.order_items.each do |item| %>
+  <article>
+    <h4><%= item.product.name %></h4>
+
+    <p>
+      Quantity:
+      <%= item.quantity %>
+    </p>
+
+    <p>
+      Unit Price at Purchase:
+      <%= number_to_currency(item.unit_price_cents / 100.0) %>
+    </p>
+
+    <p>
+      Line Total:
+      <%= number_to_currency(item.line_total_cents / 100.0) %>
+    </p>
+  </article>
+<% end %>
+
+<h3>Totals</h3>
+
+<p>
+  Subtotal:
+  <%= number_to_currency(@order.subtotal_cents / 100.0) %>
+</p>
+
+<p>
+  GST:
+  <%= number_to_currency(@order.gst_cents / 100.0) %>
+</p>
+
+<p>
+  PST:
+  <%= number_to_currency(@order.pst_cents / 100.0) %>
+</p>
+
+<p>
+  HST:
+  <%= number_to_currency(@order.hst_cents / 100.0) %>
+</p>
+
+<h3>
+  Grand Total:
+  <%= number_to_currency(@order.total_cents / 100.0) %>
+</h3>
+
+<p>
+  <%= link_to "Continue Shopping", products_path %>
+</p>
