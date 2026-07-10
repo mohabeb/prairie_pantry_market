@@ -1,2 +1,30 @@
-<h1>Products#show</h1>
-<p>Find me in app/views/products/show.html.erb</p>
+<h2><%= @product.name %></h2>
+
+<p><%= @product.description %></p>
+
+<p>
+  <strong>Price:</strong>
+  <%= number_to_currency(@product.price) %>
+</p>
+
+<p>
+  <strong>Stock Quantity:</strong>
+  <%= @product.stock_quantity %>
+</p>
+
+<p>
+  <strong>Categories:</strong>
+  <%= safe_join(@product.categories.map { |category| link_to category.name, category_path(category) }, ", ") %>
+</p>
+
+<% if @product.on_sale? %>
+  <p><strong>This product is currently on sale.</strong></p>
+<% end %>
+
+<% if @product.new_arrival? %>
+  <p><strong>This is a new arrival.</strong></p>
+<% end %>
+
+<p>
+  <%= link_to "Back to Products", products_path %>
+</p>
