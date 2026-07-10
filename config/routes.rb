@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get "cart/show"
+  get "cart/add"
+  get "cart/update"
+  get "cart/remove"
+  get "cart/clear"
   root "products#index"
 
   resources :products, only: [:index, :show]
