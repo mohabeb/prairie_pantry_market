@@ -49,10 +49,11 @@
   </h3>
 
   <p>
-    <%= link_to "Continue Shopping", products_path %>
-  </p>
+  <%= link_to "Continue Shopping", products_path %> |
+  <%= link_to "Proceed to Checkout", checkout_path %>
+</p>
 
-  <p>
-    <%= button_to "Clear Cart", clear_cart_path, method: :delete %>
-  </p>
+<p>
+  <%= button_to "Clear Cart", clear_cart_path, method: :delete %>
+</p>
 <% end %>
