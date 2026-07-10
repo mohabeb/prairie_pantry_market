@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customer: one
+  province: one
+  status: MyString
+  subtotal_cents: 1
+  gst_cents: 1
+  pst_cents: 1
+  hst_cents: 1
+  total_cents: 1
+
+two:
+  customer: two
+  province: two
+  status: MyString
+  subtotal_cents: 1
+  gst_cents: 1
+  pst_cents: 1
+  hst_cents: 1
+  total_cents: 1
