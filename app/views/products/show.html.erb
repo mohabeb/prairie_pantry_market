@@ -24,7 +24,9 @@
 <% if @product.new_arrival? %>
   <p><strong>This is a new arrival.</strong></p>
 <% end %>
-
+<p>
+  <%= button_to "Add to Cart", add_to_cart_path(@product), method: :post %>
+</p>
 <p>
   <%= link_to "Back to Products", products_path %>
 </p>
