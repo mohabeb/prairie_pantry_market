@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get "checkout/new"
+  get "checkout/create"
+  get "checkout/show"
   root "products#index"
 
   resources :products, only: [:index, :show]
