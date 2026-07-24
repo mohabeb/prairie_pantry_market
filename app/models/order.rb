@@ -7,4 +7,9 @@ class Order < ApplicationRecord
   validates :status, presence: true
   validates :subtotal_cents, :gst_cents, :pst_cents, :hst_cents, :total_cents,
             numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+
+def to_s
+  "Order ##{id}"
 end
+
+          end

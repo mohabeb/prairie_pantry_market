@@ -5,4 +5,8 @@ class Province < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :gst_rate, :pst_rate, :hst_rate,
             numericality: { greater_than_or_equal_to: 0 }
+
+            def to_s
+  name
+end
 end

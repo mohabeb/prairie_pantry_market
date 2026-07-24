@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
   has_one_attached :image
-  
+
   has_many :product_categories, dependent: :destroy
   has_many :categories, through: :product_categories
   has_many :order_items, dependent: :restrict_with_error
@@ -20,4 +20,8 @@ class Product < ApplicationRecord
   def price
     price_cents / 100.0
   end
+
+  def to_s
+  name
+end
 end

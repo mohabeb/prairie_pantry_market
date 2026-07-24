@@ -4,4 +4,8 @@ class Category < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
   validates :description, presence: true
+
+  def to_s
+  name
+end
 end
