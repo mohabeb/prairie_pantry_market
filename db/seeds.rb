@@ -101,4 +101,4 @@ puts "Seed complete."
 puts "#{Province.count} provinces created."
 puts "#{Category.count} categories created."
 puts "#{Product.count} products created."
-puts "#{Page.count} pages created."
+puts "#{Page.count} pages created."AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
