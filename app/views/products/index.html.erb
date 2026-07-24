@@ -49,6 +49,12 @@
     <% @products.each do |product| %>
       <article>
         <h4><%= link_to product.name, product_path(product) %></h4>
+              <% if product.image.attached? %>
+  <p>
+    <%= image_tag product.image, width: 200 %>
+  </p>
+<% end %>
+
 
         <p><%= product.description %></p>
 
