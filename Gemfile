@@ -60,3 +60,5 @@ gem "faker", "~> 3.8"
 gem "kaminari", "~> 1.2"
 
 gem "activeadmin", "~> 3.5"
+
+gem "devise", "~> 5.0"
