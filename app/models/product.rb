@@ -23,5 +23,30 @@ class Product < ApplicationRecord
 
   def to_s
   name
+
+def self.ransackable_attributes(auth_object = nil)
+  [
+    "active",
+    "created_at",
+    "description",
+    "id",
+    "id_value",
+    "name",
+    "new_arrival",
+    "on_sale",
+    "price_cents",
+    "stock_quantity",
+    "updated_at"
+  ]
+end
+end
+def self.ransackable_associations(auth_object = nil)
+  [
+    "categories",
+    "image_attachment",
+    "image_blob",
+    "order_items",
+    "product_categories"
+  ]
 end
 end
