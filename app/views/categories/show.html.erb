@@ -5,13 +5,9 @@
 <h3>Products in this category</h3>
 
 <% if @products.any? %>
-  <% @products.each do |product| %>
-    <article>
-      <h4><%= link_to product.name, product_path(product) %></h4>
-      <p><%= product.description %></p>
-      <p><strong>Price:</strong> <%= number_to_currency(product.price) %></p>
-    </article>
-  <% end %>
+  <div class="product-grid">
+    <%= render partial: "products/product_card", collection: @products, as: :product %>
+  </div>
 
   <%= paginate @products %>
 <% else %>

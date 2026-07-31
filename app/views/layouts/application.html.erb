@@ -11,20 +11,26 @@
   </head>
 
   <body>
-    <header>
-      <h1>Prairie Pantry Market</h1>
+    <header class="site-header">
+      <div class="brand-row">
+        <h1>Prairie Pantry Market</h1>
+        <p class="tagline">Local pantry products, gifts, and everyday favourites.</p>
+      </div>
 
-      <nav>
-      
-  <%= link_to "Products", products_path %> |
-  <%= link_to "Cart", cart_path %> |
-  <%= link_to "Orders", orders_path %> |
-  <%= link_to "About", page_path("about") %> |
-  <%= link_to "Contact", page_path("contact") %> |
-  <%= link_to "Admin Dashboard", "/admin" %>
-</nav>
-      
+      <%= render "layouts/navigation" %>
     </header>
+
+    <section class="breadcrumb-bar">
+      <% breadcrumb_items.each_with_index do |item, index| %>
+        <% label, path = item %>
+        <% if index < breadcrumb_items.length - 1 %>
+          <%= link_to label, path %>
+          <span>/</span>
+        <% else %>
+          <strong><%= label %></strong>
+        <% end %>
+      <% end %>
+    </section>
 
     <% if notice.present? %>
       <p class="notice"><%= notice %></p>
@@ -34,7 +40,7 @@
       <p class="alert"><%= alert %></p>
     <% end %>
 
-    <main>
+    <main class="page-container">
       <%= yield %>
     </main>
   </body>

@@ -1,0 +1,35 @@
+<article class="product-card">
+  <h4><%= link_to product.name, product_path(product) %></h4>
+
+  <% if product.image.attached? %>
+    <p>
+      <%= image_tag product.image, class: "product-image" %>
+    </p>
+  <% end %>
+
+  <p><%= product.description %></p>
+
+  <p>
+    <strong>Price:</strong>
+    <%= number_to_currency(product.price) %>
+  </p>
+
+  <p>
+    <strong>Categories:</strong>
+    <%= safe_join(product.categories.map { |category| link_to category.name, category_path(category) }, ", ") %>
+  </p>
+
+  <div class="product-badges">
+    <% if product.on_sale? %>
+      <span class="badge">On Sale</span>
+    <% end %>
+
+    <% if product.new_arrival? %>
+      <span class="badge">New Arrival</span>
+    <% end %>
+  </div>
+
+  <p>
+    <%= button_to "Add to Cart", add_to_cart_path(product), method: :post %>
+  </p>
+</article>
