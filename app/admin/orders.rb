@@ -1,4 +1,6 @@
 ActiveAdmin.register Order do
+config.filters = false
+
   permit_params :status
 
   actions :index, :show, :edit, :update

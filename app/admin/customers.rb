@@ -1,4 +1,6 @@
 ActiveAdmin.register Customer do
+config.filters = false
+
   permit_params :first_name,
                 :last_name,
                 :email,

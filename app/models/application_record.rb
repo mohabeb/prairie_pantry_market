@@ -6,6 +6,8 @@ class ApplicationRecord < ActiveRecord::Base
   end
 
   def self.ransackable_associations(auth_object = nil)
-    reflect_on_all_associations.map { |association| association.name.to_s }
+    reflect_on_all_associations.map(&:name).map(&:to_s).reject do |association_name|
+      association_name.include?("attachment") || association_name.include?("blob")
+    end
   end
 end

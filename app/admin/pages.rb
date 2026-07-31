@@ -1,4 +1,6 @@
 ActiveAdmin.register Page do
+config.filters = false
+
   permit_params :title, :slug, :content
 
   actions :all, except: [:destroy]

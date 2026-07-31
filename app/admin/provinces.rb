@@ -1,4 +1,6 @@
 ActiveAdmin.register Province do
+config.filters = false
+
   permit_params :name, :gst_rate, :pst_rate, :hst_rate
 
   index do
