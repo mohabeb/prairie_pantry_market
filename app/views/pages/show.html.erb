@@ -1,3 +1,5 @@
 <h2><%= @page.title %></h2>
 
-<p><%= @page.content %></p>
+<div class="content-page">
+  <%= simple_format(@page.content) %>
+</div>
