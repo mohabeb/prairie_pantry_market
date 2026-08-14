@@ -15,3 +15,238 @@
 // For example, to change the default status-tag color:
 //
 //   .status_tag { background: #6090DB; }
+/* ===== FINAL ACTIVEADMIN DASHBOARD POLISH ===== */
+
+body.active_admin #header {
+  background: linear-gradient(135deg, #082b28, #123d38, #245b4c) !important;
+  border-bottom: 4px solid #c68b1d;
+}
+
+body.active_admin #header h1,
+body.active_admin #header h1 a {
+  color: #ffffff !important;
+  font-weight: 800;
+}
+
+body.active_admin #header ul.tabs > li > a {
+  color: #ffffff !important;
+  font-size: 14px !important;
+  font-weight: 700;
+  padding: 10px 13px !important;
+  border-radius: 999px !important;
+}
+
+body.active_admin #header ul.tabs > li.current > a,
+body.active_admin #header ul.tabs > li > a:hover {
+  background: #050505 !important;
+  color: #f1c75b !important;
+}
+
+body.active_admin #title_bar {
+  background: #f5f1e8 !important;
+  border-bottom: 1px solid #e2d4bd;
+}
+
+body.active_admin #title_bar h2 {
+  color: #123d38 !important;
+  font-weight: 800;
+}
+
+.admin-dashboard-hero {
+  background: linear-gradient(135deg, #082b28, #245b4c);
+  color: #ffffff;
+  border-radius: 18px;
+  padding: 28px;
+  margin-bottom: 22px;
+  border-bottom: 5px solid #c68b1d;
+}
+
+.admin-dashboard-hero h2 {
+  color: #ffffff;
+  font-size: 32px;
+  margin: 0 0 8px;
+}
+
+.admin-dashboard-hero p {
+  color: #f1c75b;
+  font-size: 16px;
+  margin: 0;
+}
+
+.admin-dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.admin-stat-card {
+  background: #ffffff;
+  border: 1px solid #e2d4bd;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+  border-top: 5px solid #c68b1d;
+}
+
+.admin-stat-card h3 {
+  color: #123d38;
+  margin: 0 0 8px;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.admin-stat-card h2 {
+  color: #050505;
+  margin: 0 0 6px;
+  font-size: 30px;
+}
+
+.admin-stat-card p {
+  color: #5f6b70;
+  margin: 0;
+}
+
+body.active_admin .panel {
+  border-radius: 14px !important;
+  overflow: hidden;
+  border: 1px solid #e2d4bd !important;
+  box-shadow: 0 5px 14px rgba(0,0,0,0.05);
+}
+
+body.active_admin .panel h3 {
+  background: #123d38 !important;
+  color: #ffffff !important;
+  font-weight: 800;
+}
+
+body.active_admin .panel_contents {
+  background: #ffffff !important;
+}
+
+@media (max-width: 1000px) {
+  .admin-dashboard-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ===== END FINAL ACTIVEADMIN DASHBOARD POLISH ===== */
+/* ===== FINAL ACTIVEADMIN REPORT DASHBOARD ===== */
+
+body.active_admin #header {
+  background: linear-gradient(135deg, #082b28, #123d38, #245b4c) !important;
+  border-bottom: 4px solid #c68b1d;
+}
+
+body.active_admin #header h1,
+body.active_admin #header h1 a {
+  color: #ffffff !important;
+  font-weight: 800;
+}
+
+body.active_admin #header ul.tabs > li > a {
+  color: #ffffff !important;
+  font-size: 13px !important;
+  font-weight: 700;
+  padding: 9px 12px !important;
+  border-radius: 999px !important;
+}
+
+body.active_admin #header ul.tabs > li.current > a,
+body.active_admin #header ul.tabs > li > a:hover {
+  background: #050505 !important;
+  color: #d88c26 !important;
+}
+
+body.active_admin #title_bar {
+  background: #f5f1e8 !important;
+  border-bottom: 1px solid #e2d4bd;
+}
+
+body.active_admin #title_bar h2 {
+  color: #123d38 !important;
+  font-weight: 800;
+}
+
+.admin-dashboard-hero {
+  background: linear-gradient(135deg, #082b28, #245b4c);
+  color: #ffffff;
+  border-radius: 18px;
+  padding: 28px;
+  margin-bottom: 22px;
+  border-bottom: 5px solid #c68b1d;
+}
+
+.admin-dashboard-hero h2 {
+  color: #ffffff !important;
+  font-size: 32px;
+  margin: 0 0 8px;
+}
+
+.admin-dashboard-hero p {
+  color: #d88c26 !important;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.admin-dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.admin-stat-card {
+  background: #ffffff;
+  border: 1px solid #e2d4bd;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+  border-top: 5px solid #c68b1d;
+}
+
+.admin-stat-card h3 {
+  color: #123d38 !important;
+  margin: 0 0 8px;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.admin-stat-card h2 {
+  color: #050505 !important;
+  margin: 0 0 6px;
+  font-size: 30px;
+}
+
+.admin-stat-card p {
+  color: #5f6b70 !important;
+  margin: 0;
+}
+
+body.active_admin .panel {
+  border-radius: 14px !important;
+  overflow: hidden;
+  border: 1px solid #e2d4bd !important;
+  box-shadow: 0 5px 14px rgba(0,0,0,0.05);
+}
+
+body.active_admin .panel h3 {
+  background: #123d38 !important;
+  color: #ffffff !important;
+  font-weight: 800;
+}
+
+body.active_admin .panel_contents {
+  background: #ffffff !important;
+}
+
+@media (max-width: 1000px) {
+  .admin-dashboard-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ===== END FINAL ACTIVEADMIN REPORT DASHBOARD ===== */

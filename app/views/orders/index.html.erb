@@ -1,78 +1,93 @@
-<h2>Order History</h2>
+<section class="orders-page">
+  <h1>Order History</h1>
+  <p class="page-intro">Review saved customer orders, item details, taxes, and final totals.</p>
 
-<p>
-  This page lists saved customer orders for demonstration purposes.
-</p>
+  <% if @orders.any? %>
+    <div class="orders-list">
+      <% @orders.each do |order| %>
+        <% customer = order.customer %>
+        <% customer_name = [customer&.first_name, customer&.last_name].compact.join(" ") %>
+        <% customer_display = customer_name.present? ? customer_name : customer&.email %>
 
-<% if @orders.any? %>
-  <% @orders.each do |order| %>
-    <article>
-      <h3>Order #<%= order.id %></h3>
+        <article class="order-card">
+          <div class="order-card-header">
+            <div>
+              <h2>Order #<%= order.id %></h2>
+              <p>
+                <strong>Status:</strong> <%= order.status.to_s.titleize %>
+                <span class="dot-separator">•</span>
+                <strong>Customer:</strong> <%= customer_display.presence || "N/A" %>
+                <span class="dot-separator">•</span>
+                <strong>Province:</strong> <%= order.province&.name || "N/A" %>
+              </p>
+            </div>
 
-      <p>
-        <strong>Status:</strong>
-        <%= order.status %>
-      </p>
+            <div class="order-total-pill">
+              <span>Total</span>
+              <strong><%= number_to_currency(order.total_cents.to_i / 100.0) %></strong>
+            </div>
+          </div>
 
-      <p>
-        <strong>Customer:</strong>
-        <%= order.customer.first_name %>
-        <%= order.customer.last_name %>
-        -
-        <%= order.customer.email %>
-      </p>
+          <table class="clean-table compact-table">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Unit Price</th>
+                <th>Line Total</th>
+              </tr>
+            </thead>
 
-      <p>
-        <strong>Province:</strong>
-        <%= order.province.name %>
-      </p>
+            <tbody>
+              <% order.order_items.each do |item| %>
+                <tr>
+                  <td><%= item.product&.name || "Product unavailable" %></td>
+                  <td><%= item.quantity %></td>
+                  <td><%= number_to_currency(item.unit_price_cents.to_i / 100.0) %></td>
+                  <td><%= number_to_currency(item.line_total_cents.to_i / 100.0) %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
 
-      <h4>Items</h4>
+          <div class="order-summary-row">
+            <span><strong>Subtotal:</strong> <%= number_to_currency(order.subtotal_cents.to_i / 100.0) %></span>
+            <span><strong>GST:</strong> <%= number_to_currency(order.gst_cents.to_i / 100.0) %></span>
+            <span><strong>PST:</strong> <%= number_to_currency(order.pst_cents.to_i / 100.0) %></span>
+            <span><strong>HST:</strong> <%= number_to_currency(order.hst_cents.to_i / 100.0) %></span>
+          </div>
 
-      <% order.order_items.each do |item| %>
-        <p>
-          <%= item.product.name %>
-          |
-          Quantity: <%= item.quantity %>
-          |
-          Unit Price at Purchase:
-          <%= number_to_currency(item.unit_price_cents / 100.0) %>
-          |
-          Line Total:
-          <%= number_to_currency(item.line_total_cents / 100.0) %>
-        </p>
+          <div class="page-actions">
+            <%= link_to "View Invoice", order_path(order), class: "btn-secondary" %>
+          </div>
+        </article>
       <% end %>
+    </div>
+  <% else %>
+    <div class="empty-state order-card">
+      <h2>No orders yet</h2>
+      <p>Completed checkouts will appear here with order totals, customer details, taxes, and invoice links.</p>
 
-      <p>
-        <strong>Subtotal:</strong>
-        <%= number_to_currency(order.subtotal_cents / 100.0) %>
+      <table class="clean-table">
+        <thead>
+          <tr>
+            <th>Order</th>
+            <th>Customer</th>
+            <th>Status</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td colspan="4">No saved orders yet.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="page-actions">
+        <%= link_to "Continue Shopping", products_path, class: "btn-secondary" %>
       </p>
-
-      <p>
-        <strong>GST:</strong>
-        <%= number_to_currency(order.gst_cents / 100.0) %>
-      </p>
-
-      <p>
-        <strong>PST:</strong>
-        <%= number_to_currency(order.pst_cents / 100.0) %>
-      </p>
-
-      <p>
-        <strong>HST:</strong>
-        <%= number_to_currency(order.hst_cents / 100.0) %>
-      </p>
-
-      <h4>
-        Grand Total:
-        <%= number_to_currency(order.total_cents / 100.0) %>
-      </h4>
-
-      <p>
-        <%= link_to "View Invoice", order_path(order) %>
-      </p>
-    </article>
+    </div>
   <% end %>
-<% else %>
-  <p>No orders have been placed yet.</p>
-<% end %>
+</section>

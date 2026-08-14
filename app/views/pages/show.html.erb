@@ -1,5 +1,42 @@
-<h2><%= @page.title %></h2>
+<div class="info-page">
+  <% page_title = @page.title.to_s.downcase %>
+  <% page_slug = @page.slug.to_s.downcase %>
 
-<div class="content-page">
-  <%= simple_format(@page.content) %>
+  <% if page_title.include?("about") || page_slug.include?("about") %>
+    <div class="info-card">
+      <h1>About Prairie Pantry Market</h1>
+
+      <p>
+        Prairie Pantry Market is a Winnipeg-based online store offering local pantry products,
+        specialty gift boxes, and everyday favourites for customers who value quality and simplicity.
+      </p>
+
+      <p>
+        Our store features coffee, tea, honey, jam, snacks, and gift boxes. Customers can browse
+        products, filter by category, add items to cart, and complete checkout online.
+      </p>
+
+      <p>
+        We focus on a clean shopping experience, clear product information, and a professional
+        administration area for managing products, categories, images, and orders.
+      </p>
+    </div>
+
+  <% elsif page_title.include?("contact") || page_slug.include?("contact") %>
+    <div class="info-card">
+      <h1>Contact Prairie Pantry Market</h1>
+
+      <p><strong>Email:</strong> contact@prairiepantrymarket.test</p>
+      <p><strong>Phone:</strong> 204-555-0198</p>
+      <p><strong>Address:</strong> 123 Prairie Market Road, Winnipeg, MB</p>
+      <p><strong>Business Hours:</strong> Monday to Friday, 9:00 AM to 5:00 PM</p>
+      <p><strong>Gift Box Requests:</strong> Please email us with your preferred products, quantity, and pickup date.</p>
+    </div>
+
+  <% else %>
+    <div class="info-card">
+      <h1><%= @page.title %></h1>
+      <%= simple_format(@page.content) %>
+    </div>
+  <% end %>
 </div>
