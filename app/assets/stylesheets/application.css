@@ -1239,3 +1239,48 @@ input[type="submit"]:hover,
 }
 
 /* ===== END FINAL PRODUCT + NAV VISUAL FIX ===== */
+/* ===== FINAL QUICK HOMEPAGE FIX ===== */
+
+/* Product badges: not bold */
+.status-badge,
+.on-sale-badge,
+.new-arrival-badge {
+  font-weight: 500 !important;
+}
+
+/* Left sidebar: one font color for all filter/category links */
+.catalog-sidebar .mini-pill,
+.catalog-sidebar .quick-links .mini-pill,
+.catalog-sidebar .mini-pill:nth-child(1),
+.catalog-sidebar .mini-pill:nth-child(2),
+.catalog-sidebar .mini-pill:nth-child(3),
+.catalog-sidebar .mini-pill:nth-child(4),
+.quick-links .mini-pill:nth-child(2),
+.quick-links .mini-pill:nth-child(3) {
+  color: #123d38 !important;
+  font-weight: 700 !important;
+}
+
+/* Left sidebar: each item on separate line */
+.catalog-sidebar .quick-links {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+  align-items: flex-start !important;
+}
+
+/* Keep simple text style in left sidebar */
+.catalog-sidebar .mini-pill {
+  background: transparent !important;
+  border: none !important;
+  padding: 2px 0 !important;
+  box-shadow: none !important;
+  text-decoration: none !important;
+}
+
+.catalog-sidebar .mini-pill:hover {
+  color: #d88c26 !important;
+  text-decoration: underline !important;
+}
+
+/* ===== END FINAL QUICK HOMEPAGE FIX ===== */
